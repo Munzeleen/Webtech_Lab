@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateDOB() {
+            const day = document.getElementById('day').value.trim();
+            const month = document.getElementById('month').value.trim();
+            const year = document.getElementById('year').value.trim();
+            const error = document.getElementById('error');
+            
+            if (day === '' || month === '' || year === '') {
+                error.textContent = 'All date fields are required';
+                return false;
+            }
+            
+            const dayNum = parseInt(day);
+            const monthNum = parseInt(month);
+            const yearNum = parseInt(year);
+            
+            if (isNaN(dayNum) {
+                error.textContent = 'Day must be a number';
+                return false;
+            }
+            
+            if (isNaN(monthNum)) {
+                error.textContent = 'Month must be a number';
+                return false;
+            }
+            
+            if (isNaN(yearNum)) {
+                error.textContent = 'Year must be a number';
+                return false;
+            }
+            
+            if (dayNum < 1 || dayNum > 31) {
+                error.textContent = 'Day must be between 1-31';
+                return false;
+            }
+            
+            if (monthNum < 1 || monthNum > 12) {
+                error.textContent = 'Month must be between 1-12';
+                return false;
+            }
+            
+            if (yearNum < 1900 || yearNum > 2016) {
+                error.textContent = 'Year must be between 1900-2016';
+                return false;
+            }
+            
+            error.textContent = '';
+            alert('Date of Birth is valid!');
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Date of Birth Validation</h2>
+    <form onsubmit="return validateDOB()">
+        <input type="text" id="day" placeholder="dd" size="2"> /
+        <input type="text" id="month" placeholder="mm" size="2"> /
+        <input type="text" id="year" placeholder="yyyy" size="4">
+        <input type="submit" value="Submit">
+        <div id="error" style="color: red;"></div>
+    </form>
+</body>
+</html>

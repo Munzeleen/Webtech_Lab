@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Validation</title>
+    <script>
+        function validateName() {
+            const name = document.getElementById('name').value.trim();
+            const error = document.getElementById('error');
+            
+            if (name === '') {
+                error.textContent = 'Name cannot be empty';
+                return false;
+            }
+            
+            if (name.split(' ').length < 2) {
+                error.textContent = 'Name must contain at least two words';
+                return false;
+            }
+            
+            if (!/^[a-zA-Z][a-zA-Z .-]*$/.test(name)) {
+                error.textContent = 'Name can only contain a-z, A-Z, dot(.) or dash(-) and must start with a letter';
+                return false;
+            }
+            
+            error.textContent = '';
+            alert('Name is valid!');
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Name Validation</h2>
+    <form onsubmit="return validateName()">
+        <input type="text" id="name" placeholder="Enter your full name">
+        <input type="submit" value="Submit">
+        <div id="error" style="color: red;"></div>
+    </form>
+</body>
+</html>
